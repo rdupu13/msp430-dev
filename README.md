@@ -21,7 +21,9 @@ Project template for programming with the TI MSP430 Microcontroller family.
 ## Development setup
 
 1. Clone this repo somewhere.
-2. If you haven't already, follow the steps outlined in the **development environment setup guide** [here](msp430_dev_setup.md).
+
+2. If you haven't already, follow the steps outlined in the [**development environment setup guide**](msp430_dev_setup.md).
+
 3. The project already contains a Makefile. Modify it to fit your platform (under "MODIFY FOR YOUR PLATFORM:"):
     - :gear: `PLATFORM` &mdash; Put `linux` or `wsl` depending on which you're using.
     - :gear: `MCU` &mdash; Microcontroller unit number you are programming, e.g. `msp430fr2355`.

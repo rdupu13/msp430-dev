@@ -3,8 +3,8 @@
 # =============================================================================
 
 # MODIFY FOR YOUR PLATFORM: -----------
-PLATFORM = wsl
-MCU = msp430fr2355
+PLATFORM = linux
+MCU = msp430fr2153
 EXCLUDE =
 WARNFLAGS = -Wall
 # -------------------------------------

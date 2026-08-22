@@ -2,7 +2,7 @@
 
 Author: [Ryan Dupuis](https://github.com/rdupu13)
 
-Version 1
+Version 1.1
 
 ## CCS-Free on Linux / WSL
 
@@ -39,6 +39,7 @@ Move to a temporary folder and download the compiler and support files directly 
 cd /tmp
 wget http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSPGCC/9_3_1_2/export/msp430-gcc-9.3.1.11_linux64.tar.bz2
 wget http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSPGCC/9_3_1_2/export/msp430-gcc-support-files-1.212.zip
+wget https://dr-download.ti.com/software-development/driver-or-library/MD-1nw0DC7bd1/3.15.1.1/MSP430_DLL_Developer_Package_Rev_3_15_1_1.zip
 ```
 (These links can also be entered into a browser. The files will be found in ~/Downloads)
 
@@ -55,6 +56,14 @@ sudo cp msp430-gcc-support-files/include/*.ld /opt/msp430-gcc/msp430-elf/lib/
 sudo cp msp430-gcc-support-files/include/*.h /opt/msp430-gcc/include/
 ```
 
+Unzip and install the msp430 debugging library globally:
+```bash
+unzip -o MSP430_DLL_Developer_Package_Rev_3_15_1_1.zip
+sudo cp libmsp430_64.so /usr/lib/libmsp430.so
+sudo chmod 755 /usr/lib/libmsp430.so
+sudo ldconfig
+```
+
 Add compiler to `PATH` variable (put it in `~/.bashrc` so it persists):
 ```bash
 echo 'export PATH=/opt/msp430-gcc/bin:$PATH' >> ~/.bashrc
@@ -65,7 +74,14 @@ Check compiler version to verify command-line usage is working:
 ```bash
 msp430-elf-gcc --version
 ```
-If this line doesn't work, then one of the above commands was executed incorrectly.
+
+Check mspdebug to verify command-line usage is working:
+```bash
+mspdebug tilib
+```
+Press Ctrl+D to quit the `(mspdebug)` prompt.
+
+If these commands don't work, then one or more of the commands above was executed incorrectly.
 
 
 ## 4. Setup udev rules (so `sudo` isn't needed to flash)
